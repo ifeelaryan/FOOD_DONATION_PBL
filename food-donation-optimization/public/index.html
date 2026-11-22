@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FoodBridge helps organizations share surplus food with nearby community partners." />
+  <title>FoodBridge | Food Donation Distribution Optimizer</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-icon">♡</span> FoodBridge</a>
+    <div class="topbar-actions"><span class="tag">Food rescue network</span><a class="nav-login" href="/login.html">Log in / Register</a></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SDG 2 · ZERO HUNGER</p>
+        <h1>Food Donation<br /><span>Distribution Optimizer</span></h1>
+        <p class="hero-text">Connect restaurants with food collection centers, NGOs and shelters, then get good food to the people who need it. Smart matching helps minimize distance and maximize distribution.</p>
+        <a class="button button-primary" href="#add-donation">＋ Add a donation</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="plate"><span>🥗</span></div>
+        <div class="leaf leaf-one">✦</div><div class="leaf leaf-two">✦</div>
+        <div class="art-caption">Rescue food. Share hope.</div>
+      </div>
+    </section>
+
+    <section class="panel journey-panel" aria-label="Food distribution journey">
+      <div class="journey-heading"><div><p class="eyebrow">FROM SURPLUS TO SUPPORT</p><h2>One connected food rescue journey</h2></div><span class="sdg-badge">SDG 2 · ZERO HUNGER</span></div>
+      <div class="process-flow">
+        <article class="flow-step"><span class="flow-icon">🍽️</span><small>01 · DONATE</small><strong>Restaurants</strong><p>List safe surplus food and pickup details.</p></article><span class="flow-arrow" aria-hidden="true">→</span>
+        <article class="flow-step"><span class="flow-icon">📦</span><small>02 · COLLECT</small><strong>Food collection centers</strong><p>Gather, sort and prepare donations for dispatch.</p></article><span class="flow-arrow" aria-hidden="true">→</span>
+        <article class="flow-step"><span class="flow-icon">🤝</span><small>03 · MATCH</small><strong>NGOs &amp; shelters</strong><p>Match food with nearby organizations and their needs.</p></article><span class="flow-arrow" aria-hidden="true">→</span>
+        <article class="flow-step"><span class="flow-icon">💚</span><small>04 · DISTRIBUTE</small><strong>People</strong><p>Deliver meals to people in the community.</p></article>
+      </div>
+    </section>
+
+
+    <section class="stats-grid" aria-label="Donation statistics">
+      <article class="stat-card"><span class="stat-icon green">♧</span><div><p>Total donations</p><strong id="total-count">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon orange">↗</span><div><p>Available</p><strong id="available-count">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon purple">♡</span><div><p>Matched</p><strong id="matched-count">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon blue">🍱</span><div><p>Meals listed</p><strong id="meal-count">0</strong></div></article>
+    </section>
+
+    <section class="panel nearby-panel" id="nearby-partners">
+      <div class="section-heading">
+        <div><p class="eyebrow">LOCAL FOOD NETWORK</p><h2>Find nearby partners</h2></div>
+        <button class="button button-primary" id="locate-btn" type="button">◎ Use my location</button>
+      </div>
+      <div class="nearby-controls">
+        <p class="helper location-status" id="location-status">Share your location to discover nearby restaurants and community food partners. Your location is saved only when you use a mapped pickup place for a donation.</p>
+        <label for="nearby-radius">Search radius</label>
+        <select id="nearby-radius" aria-label="Nearby search radius"><option value="1000">1 km</option><option value="3000">3 km</option><option value="5000" selected>5 km</option><option value="10000">10 km</option></select>
+      </div>
+      <div class="nearby-columns">
+        <section class="nearby-group">
+          <h3>Potential food donors <span>Restaurants, cafés, bakeries and food shops</span></h3>
+          <div id="restaurant-list" class="partner-list"><div class="empty-state">Use your location to search nearby.</div></div>
+        </section>
+        <section class="nearby-group">
+          <h3>Potential food recipients <span>Food banks, shelters and community groups</span></h3>
+          <div id="recipient-list" class="partner-list"><div class="empty-state">Use your location to search nearby.</div></div>
+          <p class="selected-recipient" id="selected-recipient">No recipient selected. Select a partner to claim available food.</p>
+        </section>
+      </div>
+      <p class="map-credit">Nearby place data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>. Listings are potential partners, not confirmed donors or recipients; confirm participation before posting or claiming food.</p>
+    </section>
+
+    <section class="panel shipment-panel" id="shipment-tracking">
+      <div class="section-heading"><div><p class="eyebrow">CLAIMED FOOD · DELIVERY DETAILS</p><h2>Shipment tracking</h2></div><span class="shipment-badge"><span class="live-dot"></span><span id="shipment-count">0 ACTIVE SHIPMENTS</span></span></div>
+      <div id="shipment-list" class="shipment-list"><div class="empty-state">Confirmed food claims will appear here with courier, delivery, and timing details.</div></div>
+    </section>
+
+    <section class="main-grid">
+      <section class="panel form-panel" id="add-donation">
+        <div class="section-heading">
+          <div><p class="eyebrow">CONTRIBUTE</p><h2>Add a donation</h2></div>
+          <span class="heading-icon">＋</span>
+        </div>
+        <form id="donation-form">
+          <label for="foodName">Food name</label>
+          <input id="foodName" name="foodName" placeholder="e.g. Vegetable rice meals" required maxlength="80" />
+          <div class="form-row">
+            <div><label for="quantity">Quantity (meals)</label><input id="quantity" name="quantity" type="number" min="1" max="10000" placeholder="30" required /></div>
+            <div><label for="expiryHours">Expires in (hours)</label><input id="expiryHours" name="expiryHours" type="number" min="0.25" max="72" step="0.25" placeholder="2" required /></div>
+          </div>
+          <label for="donor">Donor / organization</label>
+          <input id="donor" name="donor" placeholder="e.g. Campus Canteen" required maxlength="80" />
+          <label for="location">Pickup location</label>
+          <input id="location" name="location" placeholder="Select a nearby place or enter an address" required maxlength="160" />
+          <input type="hidden" id="latitude" name="latitude" />
+          <input type="hidden" id="longitude" name="longitude" />
+          <p class="helper">Add pickup details so nearby partners can be matched.</p>
+          <button class="button button-primary full-width" type="submit">Save donation <span>→</span></button>
+          <p id="form-message" class="message" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel donations-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">LIVE INVENTORY</p><h2>Available food</h2></div>
+          <button class="button button-light" id="refresh-btn" type="button">↻ Refresh</button>
+        </div>
+        <div class="filter-row">
+          <input id="search-input" placeholder="Search food or donor…" aria-label="Search donations" />
+          
+        </div>
+        <div id="donation-list" class="donation-list"><div class="empty-state">Loading donations…</div></div>
+      </section>
+    </section>
+
+    <footer><span>FoodBridge</span><span>Rescuing good food. Supporting stronger communities.</span></footer>
+  </main>
+  <dialog class="claim-dialog" id="claim-dialog" aria-labelledby="claim-title">
+    <form id="claim-form" class="claim-card">
+      <button class="dialog-close" id="close-claim" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">RECIPIENT DETAILS</p><h2 id="claim-title">Claim this food</h2>
+      <p class="claim-food-summary" id="claim-food-summary"></p>
+      <label for="claim-organization">Recipient organization</label><input id="claim-organization" name="organization" required maxlength="100" placeholder="Shelter, NGO or community group" />
+      <div class="form-row"><div><label for="claim-contact">Contact person</label><input id="claim-contact" name="contactName" required maxlength="100" autocomplete="name" placeholder="Full name" /></div><div><label for="claim-phone">Phone number</label><input id="claim-phone" name="phone" type="tel" required maxlength="24" autocomplete="tel" placeholder="+91 98765 43210" /></div></div>
+      <label for="claim-address">Delivery address</label><textarea id="claim-address" name="address" rows="3" required maxlength="300" placeholder="Street, area, city, postal code"></textarea>
+      <input type="hidden" id="claim-latitude" name="latitude" /><input type="hidden" id="claim-longitude" name="longitude" />
+      <div class="location-actions"><button class="small-btn" type="button" id="use-current-location">◎ Use my current location</button><span id="claim-location-status" role="status">Enter the recipient address or use the device location.</span></div>
+      <a class="claim-map-link hidden" id="claim-map-link" target="_blank" rel="noopener noreferrer">View delivery location on map ↗</a>
+      <label for="claim-notes">Delivery notes <span class="optional-label">Optional</span></label><textarea id="claim-notes" name="notes" rows="2" maxlength="500" placeholder="Gate instructions, access details, or other useful notes"></textarea>
+      <p class="claim-error" id="claim-error" role="alert"></p>
+      <div class="claim-actions"><button class="button button-light" type="button" id="cancel-claim">Cancel</button><button class="button button-primary" id="submit-claim" type="submit">Confirm claim <span>→</span></button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>

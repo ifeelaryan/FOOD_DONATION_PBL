@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "foodName": "Vegetable Rice Meals",
+    "quantity": 30,
+    "donor": "Sunrise Campus Canteen (demo)",
+    "location": "College",
+    "expiryAt": "2026-10-31T09:03:38.987Z",
+    "status": "Available",
+    "ngo": null
+  },
+  {
+    "id": 2,
+    "foodName": "Bread and Sandwiches",
+    "quantity": 18,
+    "donor": "Green Leaf Cafe (demo)",
+    "location": "Market",
+    "expiryAt": "2026-10-31T11:03:38.987Z",
+    "status": "Available",
+    "ngo": null
+  },
+  {
+    "id": 3,
+    "foodName": "Packed Lunch Boxes",
+    "quantity": 45,
+    "donor": "Station Square Bakery (demo)",
+    "location": "Station",
+    "expiryAt": "2026-10-31T09:33:38.987Z",
+    "status": "Available",
+    "ngo": null
+  },
+  {
+    "id": 4,
+    "foodName": "Fresh Fruit Packs",
+    "quantity": 20,
+    "donor": "Fresh Basket Market (demo)",
+    "location": "Market",
+    "expiryAt": "2026-10-31T13:03:38.987Z",
+    "status": "Available",
+    "ngo": null
+  },
+  {
+    "id": 5,
+    "foodName": "curry rice",
+    "quantity": 10,
+    "donor": "happy meals home",
+    "location": "faridabad",
+    "latitude": null,
+    "longitude": null,
+    "expiryAt": "2026-11-01T08:12:49.005Z",
+    "status": "Matched",
+    "ngo": "old age home shelter",
+    "recipient": {
+      "organization": "old age home shelter",
+      "contactName": "ramesh kumar",
+      "phone": "7004831621",
+      "address": "Badarpur, Central, Delhi, South East Delhi, Delhi, 121009, India",
+      "latitude": 28.4972,
+      "longitude": 77.294178,
+      "notes": "",
+      "claimedAt": "2026-10-31T08:19:13.819Z"
+    }
+  }
+]

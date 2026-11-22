@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Log in or register as a food donor or recipient on FoodBridge." />
+  <title>Log in or Register | FoodBridge</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="login-page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-icon">♡</span> FoodBridge</a>
+    <a class="nav-login" href="/">← Back to home</a>
+  </header>
+  <main class="login-layout">
+    <section class="login-intro">
+      <p class="eyebrow">SDG 2 · ZERO HUNGER</p>
+      <h1>Good food moves<br /><span>communities forward.</span></h1>
+      <p>Join the food rescue network to share surplus meals or connect people with food support.</p>
+      <div class="login-flow"><span>🍽️ Restaurants</span><i>→</i><span>📦 Collection</span><i>→</i><span>🤝 Community</span></div>
+    </section>
+    <section class="login-card">
+      <a href="/" class="login-brand"><span class="brand-icon">♡</span> FoodBridge</a>
+      <h2 id="login-title">Welcome back</h2>
+      <p class="login-subtitle">Choose your account type to continue.</p>
+      <div class="role-switch" role="group" aria-label="Account type">
+        <button type="button" class="role-option selected" data-role="donor">🍽️ Food donor</button>
+        <button type="button" class="role-option" data-role="recipient">🏠 Recipient</button>
+      </div>
+      <div class="mode-switch" role="tablist" aria-label="Login or register">
+        <button type="button" class="mode-option selected" data-mode="login" role="tab" aria-selected="true">Log in</button>
+        <button type="button" class="mode-option" data-mode="register" role="tab" aria-selected="false">Register</button>
+      </div>
+      <form id="account-form">
+        <div id="organization-field" class="login-field hidden"><label for="organization">Restaurant or organization name</label><input id="organization" name="organization" autocomplete="organization" placeholder="e.g. Green Leaf Cafe" /></div>
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required />
+        <button id="submit-account" class="button button-primary login-submit" type="submit">Log in <span>→</span></button>
+        <p id="account-message" class="login-message" role="status" aria-live="polite"></p>
+      </form>
+      <div class="login-divider"><span>OR</span></div>
+      <button class="google-button" type="button" disabled><span class="google-g">G</span> Continue with Google</button>
+      <p class="google-note">Google sign-in becomes available after an administrator configures the app’s Google OAuth credentials.</p>
+      <p class="demo-disclaimer">Accounts are stored by this local project. Google sign-in needs OAuth credentials and is not enabled yet.</p>
+    </section>
+  </main>
+  <script src="./login.js"></script>
+</body>
+</html>
